@@ -1,0 +1,17 @@
+input:
+  ignore_config: false
+  req_count: 200
+  loops: 20
+  influencers:
+    [
+      "VitalikButerin",
+      "ErikVoorhees",
+      "barrysilbert",
+      "TimDraper",
+      "SatoshiLite",
+      "brian_armstrong",
+      "FEhrsam",
+      "aantonop",
+      "bhorowitz",
+      "rogerkver",
+    ]
