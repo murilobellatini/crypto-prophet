@@ -39,4 +39,4 @@ def get_mentioned_coins(words:list, cc:CryptoCatalog=cc) -> list:
 
 
 def txt2words(txt:str) -> list:
-    return clean_text(txt).split(' ')
+    return clean_text(txt).lower().split(' ')
