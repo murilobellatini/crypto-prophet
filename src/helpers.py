@@ -1,4 +1,15 @@
-from hashlib import md5
+import os
+from tqdm import tqdm
+import pandas as pd
+from pathlib import Path
+
+from src.text import clean_text
+from src.crypto import CryptoCatalog
+from src.paths import LOCAL_TWITTER_DATA
+ 
+
+cc = CryptoCatalog()
+tqdm.pandas()
 
 
 def select_closest(list_: list, target_value: float, key: str):
@@ -9,26 +20,23 @@ def select_closest(list_: list, target_value: float, key: str):
     return min(list_, key=lambda x: abs(x[key]-target_value))
 
 
-def get_hashed_str(txt: str, method: str = "MD5"):
+def load_df_tweets(data_path:Path=LOCAL_TWITTER_DATA):
 
-    if method == "MD5":
-        hashed = md5(txt.encode())
-    else:
-        raise NotImplementedError
+    df = pd.DataFrame()
+    tweet_paths = [data_path / f for f in os.listdir(data_path) if f.endswith('json')]
 
-    return hashed.hexdigest()
+    for t in tqdm(tweet_paths):
+        df = df.append(pd.read_json(t))
+
+    df['user_screen_name'] = df.user.apply(lambda x: x['screen_name'])   
+    df['words'] = df.full_text.progress_apply(txt2words)
+
+    return df
+
+def get_mentioned_coins(words:list, cc:CryptoCatalog=cc) -> list:
+    words = pd.Series(words)
+    return list(words.map(cc.coin2symbol_norm).dropna())
 
 
-def capitalize_first_letter(txt: str) -> str:
-    if len(txt) > 0:
-        txt = f'{txt[0].upper()}{txt[1:]}'
-    return txt
-
-def clean_text(txt:str):
-
-    tokens2remove = ('-','/',';',',','.','*','!','?','%','$','@','#')
-
-    for t in tokens2remove:
-        txt = txt.replace('-',' ')
-
-    return txt.replace('  ',' ')
+def txt2words(txt:str) -> list:
+    return clean_text(txt).split(' ')

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from src.paths import LOCAL_GLOBAL_DATA
-from src.helpers import clean_text
+from src.text import clean_text
 class Coin:
 
     def __repr__(self):
