@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 root_path = Path(os.getcwd())
-DATA_PATH = root_path / 'data'
+TWEETS_DATA_PATH = root_path / 'data/tweets'
 TWITTER_BEARER_TOKEN = os.environ.get('TWITTER_BEARER_TOKEN')
 
 
@@ -70,17 +70,17 @@ class TwitterApiWrapper:
 
         return r
 
-    def get_local_tweets_stats(self, tweets:list, filename=None, data_path: Path = DATA_PATH):
+    def get_local_tweets_stats(self, tweets:list, filename=None, path: Path = TWEETS_DATA_PATH):
         if not filename:
             filename = self.get_filename(tweets)
 
-        output_path = data_path / filename
+        output_path = path / filename
 
         return filename, output_path
 
-    def save_tweets_locally(self, tweets: list, data_path: Path = DATA_PATH, filename: str = None) -> list:
+    def save_tweets_locally(self, tweets: list, path: Path = TWEETS_DATA_PATH, filename: str = None) -> list:
 
-        filename, output_path = self.get_local_tweets_stats(tweets, filename, data_path)
+        filename, output_path = self.get_local_tweets_stats(tweets, filename, path)
         curr_tweets = self.load_tweets(output_path)
         merged_tweets = self.merge_tweets(tweet_lists=(tweets, curr_tweets))
         self.export_tweets(merged_tweets, output_path)

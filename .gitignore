@@ -1,4 +1,6 @@
-data/*
-!data/.gitkeep
+data/**
+!/data/**/
+!/data/**/.gitkeep
+
 .env
 .ipynb_checkpoints
