@@ -4,17 +4,12 @@ import time
 import random
 import requests
 from pathlib import Path
-from abc import ABC, abstractmethod
 
 from src.credentials import TWITTER_BEARER_TOKEN
 from src.paths import LOCAL_TWITTER_DATA
 
 
-class Endpoint(ABC):
-
-    @abstractmethod
-    def __init__(self, endpoint: str = None):
-        pass
+class Endpoint:
 
     @staticmethod
     def get_endpoint(endpoint:str) -> str:
@@ -30,10 +25,6 @@ class Endpoint(ABC):
         else:
             raise NotImplementedError
 
-    @abstractmethod
-    def scrape_data(self) -> list:
-        pass
-
     def get_data(self, params:dict) -> requests.Response:
 
         headers = {'Content-Type': 'application/json',
@@ -42,9 +33,7 @@ class Endpoint(ABC):
 
         return requests.get(self.url, params=params, headers=headers)
 
-    def safe_get_data(self, params:dict) -> requests.Response:
-
-        sleep_time_s = 60
+    def safe_get_data(self, params:dict, sleep_time_s:int=60) -> requests.Response:
 
         while True:
             r = self.get_data(params=params)
@@ -56,6 +45,7 @@ class Endpoint(ABC):
             sleep_time_s = 2*sleep_time_s
 
         return r
+class TwitterScraper(Endpoint):
 
     def get_local_data_stats(self, tweets:list, filename=None, path: Path = LOCAL_TWITTER_DATA):
         if not filename:

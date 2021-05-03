@@ -3,9 +3,9 @@ import json
 from pathlib import Path
 
 from src.paths import root_path
-from src.twitter import Endpoint
+from src.twitter import TwitterScraper
 
-class UserTimeline(Endpoint):
+class UserTimeline(TwitterScraper):
 
     def __init__(self, endpoint: str = 'user_timeline'):
         self.url = self.get_endpoint(endpoint)

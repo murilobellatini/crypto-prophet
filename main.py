@@ -1,5 +1,5 @@
-from src.twitter.endpoints import UserTimeline
+from src.twitter.scrapper import UserTimeline
 
 if __name__ == '__main__':
-    api = UserTimeline()
-    api.scrape_data()
+    scrapper = UserTimeline()
+    scrapper.scrape_data()
