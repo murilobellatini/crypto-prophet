@@ -31,6 +31,9 @@ class Endpoint:
                    'Accept': 'application/json',
                    'Authorization': f'Bearer {TWITTER_BEARER_TOKEN}'}
 
+        if 'tweet_mode' not in params.keys():
+            params['tweet_mode'] = 'extended'
+
         return requests.get(self.url, params=params, headers=headers)
 
     def safe_get_data(self, params:dict, sleep_time_s:int=60) -> requests.Response:
@@ -98,3 +101,11 @@ class TwitterScraper(Endpoint):
         if tweets:
             return min(tweets, key=lambda x:x['id'])['id'] # gets oldest tweet extracted from influencer
 
+
+class Tweet:
+    def __init__(self, tweet_json:dict):
+
+        for k,v in tweet_json:
+            setattr(self, k, v)
+
+        self.as_dict = tweet_json

@@ -11,7 +11,7 @@ class UserTimeline(TwitterScraper):
         self.url = self.get_endpoint(endpoint)
 
 
-    def scrape_screen_name_tweets(self, screen_name:str, loops:int=1) -> None:
+    def scrape_screen_name_tweets(self, screen_name:str, loops:int=1) -> list:
         filename, output_path = self.get_local_data_stats([{'user':{'screen_name': screen_name}}])
         tweets = self.load_data(output_path)
         for _ in range(loops):
@@ -19,11 +19,13 @@ class UserTimeline(TwitterScraper):
             params = {
                 'screen_name': screen_name,
                 'count': self.config['input']['req_count'],
-                'max_id': max_id
+                'max_id': max_id,
             }
             curr_tweets = json.loads(self.safe_get_data(params).content)
             tweets = self.merge_data((tweets,curr_tweets))
         self.save_data_locally(tweets)
+
+        return tweets
         
 
 
@@ -31,5 +33,9 @@ class UserTimeline(TwitterScraper):
         with open(config_file, mode='r') as f:
             self.config = yaml.load(f, Loader=yaml.FullLoader)
 
+        tweets = []
         for influencer in self.config['input']['influencers']:
-            self.scrape_screen_name_tweets(screen_name=influencer, loops=self.config['input']['loops'])
+            tweets.append(self.scrape_screen_name_tweets(
+                screen_name=influencer, loops=self.config['input']['loops']))
+
+        return tweets
