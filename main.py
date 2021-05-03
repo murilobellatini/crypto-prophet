@@ -1,5 +1,5 @@
-from src.twitter.api import TwitterApiWrapper
+from src.twitter.endpoints import UserTimeline
 
 if __name__ == '__main__':
-    api = TwitterApiWrapper()
-    api.scrape_tweets()
+    api = UserTimeline()
+    api.scrape_data()
