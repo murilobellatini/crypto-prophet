@@ -1,17 +1,13 @@
+import os
 import yaml
 import json
 import time
-import requests
-import os
 import random
+import requests
 from pathlib import Path
-from dotenv import load_dotenv
 
-load_dotenv()
-
-root_path = Path(os.getcwd())
-TWEETS_DATA_PATH = root_path / 'data/tweets'
-TWITTER_BEARER_TOKEN = os.environ.get('TWITTER_BEARER_TOKEN')
+from src.credentials import TWITTER_BEARER_TOKEN
+from src.paths import LOCAL_TWITTER_DATA, root_path
 
 
 class TwitterApiWrapper:
@@ -70,7 +66,7 @@ class TwitterApiWrapper:
 
         return r
 
-    def get_local_tweets_stats(self, tweets:list, filename=None, path: Path = TWEETS_DATA_PATH):
+    def get_local_tweets_stats(self, tweets:list, filename=None, path: Path = LOCAL_TWITTER_DATA):
         if not filename:
             filename = self.get_filename(tweets)
 
@@ -78,7 +74,7 @@ class TwitterApiWrapper:
 
         return filename, output_path
 
-    def save_tweets_locally(self, tweets: list, path: Path = TWEETS_DATA_PATH, filename: str = None) -> list:
+    def save_tweets_locally(self, tweets: list, path: Path = LOCAL_TWITTER_DATA, filename: str = None) -> list:
 
         filename, output_path = self.get_local_tweets_stats(tweets, filename, path)
         curr_tweets = self.load_tweets(output_path)
