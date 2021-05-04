@@ -43,7 +43,7 @@ class Endpoint:
             if r.status_code == 200:
                 break
             print(
-                f'Response code: {r.status_code}. Sleeping for {sleep_time_s} secs before retry...')
+                f'Response code: {r.status_code}. Sleeping for {int(sleep_time_s/60)} min before retry...')
             time.sleep(sleep_time_s)
             sleep_time_s = 2*sleep_time_s
 
