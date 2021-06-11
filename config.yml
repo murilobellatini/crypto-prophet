@@ -1,9 +1,10 @@
 input:
+  towards_future: true
   ignore_config: false
   req_count: 200
   loops: 20
   influencers: [
-      # "elonmusk",
+      "elonmusk",
       # "VitalikButerin",
       # "ErikVoorhees",
       # "barrysilbert",
@@ -30,11 +31,10 @@ input:
       # "IvanOnTech",
       # "KennethBosak",
       # "CryptoBrekkie",
-      "ScottMellker",
-      "TheCryptoDog",
-      "Bitboy_Crypto",
-      "DanHeld",
-      "PeterMcCormack",
-      "LayahHeilpern",
-      "coinbound_io",
+      # "TheCryptoDog",
+      # "Bitboy_Crypto",
+      # "DanHeld",
+      # "PeterMcCormack",
+      # "LayahHeilpern",
+      # "coinbound_io",
     ]

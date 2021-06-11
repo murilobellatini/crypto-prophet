@@ -7,6 +7,7 @@ from pathlib import Path
 
 from src.credentials import TWITTER_BEARER_TOKEN
 from src.paths import LOCAL_TWITTER_DATA
+from src.helpers import drop_null_values
 
 
 class Endpoint:
@@ -34,6 +35,8 @@ class Endpoint:
         if 'tweet_mode' not in params.keys():
             params['tweet_mode'] = 'extended'
 
+        params = drop_null_values(params)
+
         return requests.get(self.url, params=params, headers=headers)
 
     def safe_get_data(self, params:dict, sleep_time_s:int=60) -> requests.Response:
@@ -43,7 +46,7 @@ class Endpoint:
             if r.status_code == 200:
                 break
             print(
-                f'Response code: {r.status_code}. Sleeping for {int(sleep_time_s/60)} min before retry...')
+                f'Response code: {r.status_code}. Content: {r.content}\n\nSleeping for {int(sleep_time_s/60)} min before retry...')
             time.sleep(sleep_time_s)
             sleep_time_s = 2*sleep_time_s
 
@@ -59,11 +62,12 @@ class TwitterScraper(Endpoint):
         return filename, output_path
 
     def save_data_locally(self, tweets: list, path: Path = LOCAL_TWITTER_DATA, filename: str = None) -> list:
-
+        print(f'Saving data locally...')
         filename, output_path = self.get_local_data_stats(tweets, filename, path)
         curr_tweets = self.load_data(output_path)
         merged_data = self.merge_data(tweet_lists=(tweets, curr_tweets))
         self.export_data(merged_data, output_path)
+        print(f'Data successfully saved `{output_path}`')
         return merged_data
 
     def export_data(self, tweets: list, output_path: Path) -> None:
@@ -73,8 +77,11 @@ class TwitterScraper(Endpoint):
     def load_data(self, path: Path) -> list:
         tweets = []
         if os.path.isfile(path):
-            with open(path, mode='r') as f:
-                tweets = json.load(f)
+            try:
+                with open(path, mode='r') as f:
+                    tweets = json.load(f)
+            except Exception as e:
+                print(f"path: {path}, error: {e}")
         else:
             print(f'File does not exist at path {path}. Skipping loading...')
         return tweets
@@ -100,6 +107,10 @@ class TwitterScraper(Endpoint):
     def get_oldest_data_id(self, tweets):
         if tweets:
             return min(tweets, key=lambda x:x['id'])['id'] # gets oldest tweet extracted from influencer
+
+    def get_latest_data_id(self, tweets):
+        if tweets:
+            return max(tweets, key=lambda x:x['id'])['id'] # gets oldest tweet extracted from influencer
 
 
 class Tweet:

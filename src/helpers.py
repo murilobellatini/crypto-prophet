@@ -40,3 +40,6 @@ def get_mentioned_coins(words:list, cc:CryptoCatalog=cc) -> list:
 
 def txt2words(txt:str) -> list:
     return clean_text(txt).lower().split(' ')
+
+def drop_null_values(d:dict):
+    return {k: v for k, v in d.items() if v is not None}
