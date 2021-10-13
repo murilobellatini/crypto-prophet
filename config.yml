@@ -4,7 +4,10 @@ input:
   req_count: 200
   loops: 20
   influencers: [
-      "elonmusk",
+      "guy.eth",
+      "100trillionUSD",
+      "CryptosRus",
+      # "elonmusk",
       # "VitalikButerin",
       # "ErikVoorhees",
       # "barrysilbert",

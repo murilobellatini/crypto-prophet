@@ -42,7 +42,7 @@ def txt2words(txt:str) -> list:
     return clean_text(txt).lower().split(' ')
 
 def drop_null_values(d:dict):
-    return {k: v for k, v in d.items(pip install missingno) if v is not None}
+    return {k: v for k, v in d.items() if v is not None}
 
 def get_valorization(df, col='close', periods=-60, perc=True):
     change = df[col].shift(periods=periods) - df[col]
