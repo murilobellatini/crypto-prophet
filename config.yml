@@ -1,12 +1,21 @@
 input:
-  towards_future: true
+  towards_future: false
   ignore_config: false
   req_count: 200
   loops: 20
   influencers: [
-      "guy.eth",
-      "100trillionUSD",
-      "CryptosRus",
+      "intocryptoverse",
+      "TheMoonCarl",
+      "TheCryptoLark",
+      "BTCFoundation",
+      "ethereum",
+      "Cardano",
+      "AltcoinDailyio",
+      # "StackerSatoshi",
+      # "maxwell_maher",
+      # "100trillionUSD",
+      # "coinbureau",
+      # "CryptosRus",
       # "elonmusk",
       # "VitalikButerin",
       # "ErikVoorhees",
