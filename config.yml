@@ -4,13 +4,15 @@ input:
   req_count: 200
   loops: 20
   influencers: [
-      "intocryptoverse",
-      "TheMoonCarl",
-      "TheCryptoLark",
-      "BTCFoundation",
-      "ethereum",
-      "Cardano",
-      "AltcoinDailyio",
+      "AlertTrade",
+      "whale_alert",
+      # "intocryptoverse",
+      # "TheMoonCarl",
+      # "TheCryptoLark",
+      # "BTCFoundation",
+      # "ethereum",
+      # "Cardano",
+      # "AltcoinDailyio",
       # "StackerSatoshi",
       # "maxwell_maher",
       # "100trillionUSD",
