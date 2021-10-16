@@ -51,6 +51,6 @@ Below you can check how to execute the Notebooks.
 
 Scrapping logic is based on Tweets available in influencer's timeline.
 
-1. Access config.yml
+1. Access `config.yml`
 2. Set parameter `infuencers` with a list of the target influencers' usernames on Twitter
 3. Run main.py (with environment activated): `python main.py` 
