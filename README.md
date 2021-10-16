@@ -1,4 +1,4 @@
-# CryptoProphet
+# CryptoProphet 🧞💰
 
 ## Objetive
 
@@ -22,8 +22,8 @@ Then created some features, such as:
 
 After that we've trained simple XGBoost models.
 
-1. Regressor: to predict the exact price of Bitcoin in the given time span
-2. Classifier: to predict in which change quantile Bitcoin would be (also within the future time span)
+1. `Regressor`: to predict the exact price of Bitcoin in the given time span
+2. `Classifier`: to predict in which change quantile Bitcoin would be (also within the future time span)
 
 ## Results
 
@@ -54,3 +54,33 @@ Scrapping logic is based on Tweets available in influencer's timeline.
 1. Access `config.yml`
 2. Set parameter `infuencers` with a list of the target influencers' usernames on Twitter
 3. Run main.py (with environment activated): `python main.py` 
+
+#### Our Data
+
+The datasets we've used are available at the Google Drvie below.
+
+Please as permission to access them (they are private).
+
+https://drive.google.com/drive/folders/1AQH_GH9RjiX6mZzMKwiv-VG6vOz0AKPP
+
+#### Notebook's Index
+
+* `01_check_extracted_tweets.ipynb`: Checks extracted tweets for the analysis (amount and influencers)
+* `02_develop_crytpo_spotter.ipynb`: Identify mentioned coins on tweets (to use as features afterwards)
+* `03_extract_txt_embedding.ipynb`: Clean and extract Text Embeddings from tweets using BERT Transformer.
+* `04_extract_btc_price_history.ipynb`: Extract Bitcoin price data from Yahoo Finance API (hourly based :( )
+* `05_generate_ta_kpis.ipynb`: Generate Technical Analysis KPI's.
+* `06*_create_train_dataset.ipynb`: Preprocess data for training with three variants.
+  * `a`: First version - Text Embeddings and other simple features
+  * `b`: Technical Analysis - `a` and Technical Analysis KPI's 
+  * `c`: Zero Shot Classification - `a` filtering only tweets about Crypto or Bitcoin
+* `07*_train_xgboost_regressor.ipynb`: Train and assess results of XGBoost Regression model with two variants
+  * `a`: First version - Text Embeddings and other simple features
+  * `b`: Technical Analysis - `a` and Technical Analysis KPI's 
+* `08*_train_xgboost_quantile_***.ipynb`:Train and assess results of XGBoost Classifier model with 
+  * `a`: First version with 5Q2H (5 Quantiles and predictions in 2 hour ahead)
+  * `b`: First version with 5Q1H (no tested due to time constraints...)
+  * `c`: First version with 3Q2H
+  * `d`: First version with 3Q1H
+  * `f`: First version with 3Q12H
+  * `g`: Zero Shot Classification 3Q2H
