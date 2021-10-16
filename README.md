@@ -49,7 +49,7 @@ Below you can check how to execute the Notebooks.
 
 ### Extract More Tweets
 
-Scrapping logic is based on Tweets available in influencer timeline.
+Scrapping logic is based on Tweets available in influencer's timeline.
 
 1. Access config.yml
 2. Set parameter `infuencers` with a list of the target influencers' usernames on Twitter
