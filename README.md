@@ -6,7 +6,7 @@ Can influencers collectively predict Bitcoin price?
 
 > That's what we wanna find out!
 
-## Methodology
+## Overview
 
 Our hypothesis is that crypto influencers have a predictive (or manipulative) power over Bitcoin price.
 
@@ -55,7 +55,8 @@ Scrapping logic is based on Tweets available in influencer's timeline.
 2. Set parameter `infuencers` with a list of the target influencers' usernames on Twitter
 3. Run main.py (with environment activated): `python main.py` 
 
-#### Our Data
+## Methodology
+### Our Data
 
 The datasets we've used are available at the Google Drvie below.
 
@@ -63,7 +64,7 @@ Please as permission to access them (they are private).
 
 https://drive.google.com/drive/folders/1AQH_GH9RjiX6mZzMKwiv-VG6vOz0AKPP
 
-#### Notebook's Index
+### Notebook's Index
 
 * `01_check_extracted_tweets.ipynb`: Checks extracted tweets for the analysis (amount and influencers)
 * `02_develop_crytpo_spotter.ipynb`: Identify mentioned coins on tweets (to use as features afterwards)
