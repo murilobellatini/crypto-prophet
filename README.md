@@ -66,7 +66,11 @@ https://drive.google.com/drive/folders/1AQH_GH9RjiX6mZzMKwiv-VG6vOz0AKPP
 
 ### Notebook's Index
 
-* `01_check_extracted_tweets.ipynb`: Checks extracted tweets for the analysis (amount and influencers)
+Below an overview of the available Notebooks.
+
+Their objective is described as well.
+
+* `01_check_extracted_tweets.ipynb`: Check extracted tweets for the analysis (amount and influencers)
 * `02_develop_crytpo_spotter.ipynb`: Identify mentioned coins on tweets (to use as features afterwards)
 * `03_extract_txt_embedding.ipynb`: Clean and extract Text Embeddings from tweets using BERT Transformer.
 * `04_extract_btc_price_history.ipynb`: Extract Bitcoin price data from Yahoo Finance API (hourly based :( )
