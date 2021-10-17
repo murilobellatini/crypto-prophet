@@ -31,7 +31,11 @@ The experiments below were fully executed.
 
 Surprisingly, the notebook 8h gives the best result WITHOUT considering contextual information. It considers only Technical Analysis indicators. That's might be the case, because this data is less noisy than tweets.
 
-Considering text, the best model is 8d, which predicts the output 3 quantiles (INCREASE, NEUTRAL or DECREASE) within a 12h timeframe. This look the mot promissing to keep up working on the Crypto Prophet based on tweets.
+Considering text, the best model is 8d, which predicts the output 3 quantiles (INCREASE, NEUTRAL or DECREASE) within a 12h timeframe. This look the most promising to keep up working on the Crypto Prophet based on tweets. That' so because it's better than randomness, which would give 33% accuracy to predict one of 3 classes.
+
+### Conclusion
+
+> The hypotheses that crypto influencers have a predictive power over the market still remains, since our models perform better than randomness 
 
 ![Results](/img/results.PNG)
 
