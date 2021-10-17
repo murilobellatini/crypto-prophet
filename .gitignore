@@ -149,3 +149,6 @@ data/**
 
 .env
 .ipynb_checkpoints
+*.pkl
+
+IGNORE*

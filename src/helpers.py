@@ -48,6 +48,6 @@ def get_valorization(df, col='close', periods=-60, perc=True):
     change = df[col].shift(periods=periods) - df[col]
     if perc:
         change = change / df[col]
-    return change.rename(f'{col}_change_{abs(periods)}periods{("_perc" if perc else "")}')
+    return change.rename(f'{col}_change_{"previous" if periods > 0 else ""}{abs(periods)}periods{("_perc" if perc else "")}')
 
 
