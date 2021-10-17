@@ -27,6 +27,12 @@ After that we've trained simple XGBoost models.
 
 ## Results
 
+The experiments below were fully executed.
+
+Surprisingly, the notebook 8h gives the best result WITHOUT considering contextual information. It considers only Technical Analysis indicators. That's might be the case, because this data is less noisy than tweets.
+
+Considering text, the best model is 8d, which predicts the output 3 quantiles (INCREASE, NEUTRAL or DECREASE) within a 12h timeframe. This look the mot promissing to keep up working on the Crypto Prophet based on tweets.
+
 ![Results](/img/results.PNG)
 
 ## How to run
