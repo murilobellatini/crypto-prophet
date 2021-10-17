@@ -27,7 +27,7 @@ After that we've trained simple XGBoost models.
 
 ## Results
 
-[Results](/img/results.PNG)
+![Results](/img/results.PNG)
 
 ## How to run
 
