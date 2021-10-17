@@ -27,7 +27,7 @@ After that we've trained simple XGBoost models.
 
 ## Results
 
-TBD
+[Results](/img/results.PNG)
 
 ## How to run
 
